@@ -1,3 +1,5 @@
 # UW Bothell Hackathon April 2024
 
-## By Kevin and Jake
+## By Kevin, Jake, and Karan
+
+
