@@ -6,7 +6,7 @@ const port = process.env.PORT;
 
 require("./config/config");
 
-app.use(express.json(), express.urlencoded({ extended: true }), cors());
+app.use(express.json(), express.urlencoded({ extended: true }), cors({ origin: 'http://localhost:5173', credentials: true }));
 
 const AllMyUserRoutes = require("./routes/user-routes");
 AllMyUserRoutes(app);
