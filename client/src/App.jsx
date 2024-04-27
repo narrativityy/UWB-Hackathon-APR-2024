@@ -4,6 +4,7 @@ import AuthContext from './AuthContext';
 import Home from './components/Home'
 import Login from './components/Login'
 import Navbar from './components/Navbar';
+import Register from './components/Register'
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
       }
     </AuthContext.Provider>
