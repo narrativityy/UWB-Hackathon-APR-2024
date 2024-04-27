@@ -1,33 +1,50 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import axios from 'axios'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [problem, setProblem] = useState('')
+  const [response, setResponse] = useState('')
+
+  const submitProblem = async (e) => {
+    e.preventDefault()
+    console.log(document.cookie)
+    
+    if (document.cookie.includes('threadId')) {
+      console.log('thread id')
+      axios.post('http://localhost:8001/api/send-message', { message: problem, thread_id: document.cookie.split('=')[1] })
+        .then((res) => {
+          setResponse(res.data.message)
+          console.log(res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
+    else {
+      console.log('no thread id')
+      axios.post('http://localhost:8001/api/send-message', { message: problem })
+      .then((res) => {
+        setResponse(res.data.message)
+        console.log(res.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    }
+  }
+
 
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <form onSubmit={submitProblem}>
+          <input type="text" value={problem} onChange={(e) => setProblem(e.target.value)} placeholder='Describe Your Problem'/>
+          <br />
+          <button>Submit</button>
+          <p>{response}</p>
+        </form>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }

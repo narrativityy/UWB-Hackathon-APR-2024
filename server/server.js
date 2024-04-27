@@ -4,11 +4,13 @@ const app = express();
 require('dotenv').config();
 const port = process.env.PORT;
 
-require("./config/template-config");
+// require("./config/template-config");
 
 app.use(express.json(), express.urlencoded({ extended: true }), cors());
 
-const AllMyTemplateRoutes = require("./routes/template-routes");
-AllMyTemplateRoutes(app);
+// const AllMyTemplateRoutes = require("./routes/template-routes");
+// AllMyTemplateRoutes(app);
+const AllMyOpenAIRoutes = require("./routes/open-ai-routes");
+AllMyOpenAIRoutes(app);
 
 app.listen(port, () => console.log(`Listening on port: ${port}`) );
