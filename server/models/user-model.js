@@ -21,7 +21,17 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: [true, "Password is required"],
         minlength: [8, "Password must be at least 8 characters long"]
-    }
+    },
+    sponsor: {
+        type: String,
+        required: [true, "Sponsor is required"],
+        minlength: [3, "Sponsor must be at least 3 characters long"]
+    },
+    sponsorEmail: {
+        type: String,
+        required: [true, "Sponsor Email is required"],
+        minlength: [3, "Sponsor Email must be at least 3 characters long"]
+    },
 }, {timestamps: true});
 
 UserSchema.pre('save', function(next) {

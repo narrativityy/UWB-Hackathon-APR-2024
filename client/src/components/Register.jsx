@@ -14,6 +14,8 @@ const Register = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [sponsor, setSponsor] = useState('')
+  const [sponsorEmail, setSponsorEmail] = useState('')
   const [errors, setErrors] = useState([])
 
   const register = (e) => {
@@ -24,7 +26,7 @@ const Register = () => {
       return
     }
 
-    axios.post('http://localhost:8001/api/users/register', {name, username, email, password}, {withCredentials: true})
+    axios.post('http://localhost:8001/api/users/register', {name, username, email, password, sponsor, sponsorEmail}, {withCredentials: true})
       .then(res => {
         console.log(res.data)
         setLoggedIn(true)
@@ -59,10 +61,14 @@ const Register = () => {
           <br />
           <input className='my-1 p-1 shadow-md rounded' type='password' placeholder='Confirm Password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
           <br />
+          <input className='my-1 p-1 shadow-md rounded' type='text' placeholder='Sponsor' value={sponsor} onChange={(e) => setSponsor(e.target.value)} />
+          <br />
+          <input className='my-1 p-1 shadow-md rounded' type='text' placeholder='Sponsor Email' value={sponsorEmail} onChange={(e) => setSponsorEmail(e.target.value)} />
+          <br />
           <button className='my-1 p-1 bg-white hover:bg-black hover:text-white rounded shadow-md' type='submit'>Sign up</button>
           <Link to={'/login'}><h5 className='mt-2 text-blue-700 underline'>Log in</h5></Link>
           {errors.map((elem, i) => {
-            return <p key={i} className='mt-2 text-red-500'>{elem}</p>
+            return <p key={i} className='mt-2 text-red-700'>{elem}</p>
           })}
         </form>
       </div>

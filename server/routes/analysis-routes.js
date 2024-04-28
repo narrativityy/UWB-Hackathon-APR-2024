@@ -6,4 +6,5 @@ module.exports = app => {
     app.patch('/api/analyses/:id', AnalysisController.updateExistingAnalysis);
     app.post('/api/analyses', AnalysisController.createNewAnalysis);
     app.delete('/api/analyses/:id', AnalysisController.deleteAnExistingAnalysis);
+    app.post('/api/analyze', AnalysisController.analyze);
 }

@@ -24,15 +24,11 @@ const Navbar = () => {
   }
 
   return (
-    <nav className='flex justify-between items-center m-1 py-2 px-4 bg-black text-white rounded'>
-      <Link to={'/'}><h1 className='text-2xl'>Navbar</h1></Link>
-
-      <div className='flex justify-around items-center gap-x-4 m-1 py-2 px-4 bg-black text-white rounded'>
-        <Link to={'/analysis/new'}><h3 className='cursor-pointer'>New Analysis</h3></Link>
-        <h3 className='cursor-pointer' onClick={logout}>Logout</h3>
-      </div>
-
-    </nav>
+    <div>
+      <nav className='flex justify-center items-center py-2 px-4 bg-cabana-green text-white'>
+        <Link to={'/'}><img className='w-auto h-16' src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngall.com%2Fwp-content%2Fuploads%2F5%2FLotus.png&f=1&nofb=1&ipt=9bbf3b18e70008c037b0055f45d9714d40b68b78bce5988ef54cea7418e35772&ipo=images" alt="lotus flower" /></Link>
+      </nav>
+    </div>
   )
 }
 

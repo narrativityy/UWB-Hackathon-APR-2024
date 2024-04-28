@@ -6,6 +6,7 @@ import Login from './components/Login'
 import Navbar from './components/Navbar';
 import Register from './components/Register'
 import NewAnalysis from './components/NewAnalysis'
+import CopingStrategies from './components/CopingStrategies'
 
 
 function App() {
@@ -19,13 +20,15 @@ function App() {
 
   return (
     <AuthContext.Provider value={{ loggedIn, setLoggedIn }}>
+      <Navbar />
       {loggedIn ?
       <div>
-        <Navbar />
         <Routes>
           <Route path="/" element={<div><Home /></div>} />
 
           <Route path="/analysis/new" element={<NewAnalysis />} />
+
+          <Route path="/coping-strategies" element={<CopingStrategies />} />
 
           <Route path="*" element={<Navigate to="/" />} />
 
