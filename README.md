@@ -8,6 +8,8 @@
 
 2. npm i
 
+3. download the .env file and put it in the server directory
+
 3. cd ../client
 
 4. npm i
