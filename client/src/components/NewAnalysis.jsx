@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import Cookies from 'js-cookie'
+import { useNavigate } from 'react-router-dom'
 
 const NewAnalysis = () => {
 
@@ -16,6 +17,8 @@ const NewAnalysis = () => {
   const [triggerExposure, setTriggerExposure] = useState('select')
   const [physicalSymptoms, setPhysicalSymptoms] = useState('select')
   const [errors, setErrors] = useState([])
+
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -48,6 +51,7 @@ const NewAnalysis = () => {
     axios.post('http://localhost:8001/api/analyses', { userJWT: Cookies.get('usertoken'), analysis }, {withCredentials: true})
       .then(res => {
         console.log('success')
+        navigate('/')
       })
       .catch(err => {
         console.log(err.response.data)
